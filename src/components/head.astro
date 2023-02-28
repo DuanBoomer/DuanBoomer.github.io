@@ -1,0 +1,71 @@
+---
+import headshot from "../portfolio_images/headshot.jpg";
+---
+
+<div id="head-container">
+  <h1 class="anitext">Chirag</h1>
+  <h2 class="anitext">A Student of Life <br /> Lifetime learner</h2>
+  <img
+    id="headshot"
+    src={headshot}
+    alt="headshot"
+  />
+
+  <p>
+    I’m a man who is trying to better his life by throwing himself into tireless
+    work and skill development. I’m a total detail freak. I’m often ask lots of
+    questions, and deliver quality works, always.
+    <br />I am not fixed to a specific software or programming language and
+    switch to what is best for the project.
+  </p>
+</div>
+
+<style>
+  #headshot {
+    height: 100vh;
+    position: absolute;
+    right: -15rem;
+    top: 0;
+    transform: translate3d(0, 0, -10px) scale(1.75);
+    transform-style: preserve-3d;
+
+    z-index: -100;
+  }
+
+  h1 {
+    font-weight: 900;
+    font-size: 160px;
+    width: fit-content;
+    margin: 20vh 0;
+    /* position: relative; */
+    /* top: 15vh; */
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 40px;
+    width: fit-content;
+    margin: 0;
+
+    /* position: relative; */
+    /* top: 35vh; */
+  }
+
+  p {
+    /* position: absolute; */
+    /* bottom: 0; */
+
+    margin-top: 40vh;
+    width: 60%;
+    font-weight: 700;
+    font-size: 50px;
+    text-decoration-line: underline;
+  }
+
+  #head-container {
+    transform-style: preserve-3d;
+    padding-left: 8%;
+    min-height: 200vh;
+    /* z-index: -1000; */
+  }
+</style>

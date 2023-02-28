@@ -1,35 +1,84 @@
 ---
-export interface Props {
-	title: string;
-}
+import '../styles/global.css'
+import logo from "../portfolio_images/logo-cg.png"
 
-const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Chirag Portfolio</title>
+  </head>
+  <body>
+    <img
+  id="logo"
+  src={logo}
+  alt="logo"
+/>
+    <div id="body-wrapper">
+      <slot />
+    </div>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+
+<style>
+  
+  #body-wrapper{
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    perspective: 10px;
+    overflow-x: hidden;
+  }
+
+  #logo{
+    position: fixed;
+    z-index: 1000;
+    top: 1rem;
+    left: 1rem;
+    width: 3.5vw;
+  }
 </style>
+
+<script>
+
+const text = document.querySelectorAll('.anitext');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('reveal-text');
+      return;
+    }
+
+    // entry.target.classList.remove('reveal-text');
+  });
+});
+
+text.forEach(elem => {
+  observer.observe(elem);
+})
+</script>

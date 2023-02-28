@@ -1,0 +1,66 @@
+---
+const { image, title, desciption, cardState } = Astro.props;
+// const cardState = 'red'
+
+const [cardWidth, cardColor, span] =
+  cardState === "green" ? ["25rem", "--greenish", "1"] : ["25rem", "--accent-color", "1"];
+---
+
+<div
+  id="learning-card"
+  style={{
+    // width: '100%',
+    backgroundColor: `var(${cardColor})`,
+    // gridColumn: `span ${span}`,
+  }}>
+  <header>
+    <img
+      src={image}
+      alt=""
+    />
+    <h3>{title}</h3>
+  </header>
+  <p>
+    {desciption}
+  </p>
+</div>
+
+<style>
+  h3 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 50px;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    /* background-color: red; */
+  }
+
+  p {
+    margin: 0;
+    margin-left: 1rem;
+
+    font-size: 1.3rem;
+  }
+
+  #learning-card {
+    margin: 0;
+    padding: 2rem;
+    border-radius: 1rem;
+    color: var(--whiteish);
+    transition-duration: 200ms;
+    min-width: 25rem;
+    /* width: 100%; */
+    /* width: var({cardWidth}); */
+    /* background-color: var({cardColor}); */
+  }
+
+  #learning-card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+  }
+</style>
