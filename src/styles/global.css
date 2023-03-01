@@ -21,7 +21,27 @@ body {
     background-color: var(--body-color);
     color: var(--accent-color);
     overflow-x: hidden;
+    cursor: none;
 }
+
+h1, h2, h3 , h4, h5, h6{
+    color: var(--blackish);
+}
+
+h2{
+    font-weight: 800;
+    font-size: 80px;
+    /* line-height: 97px; */
+}
+
+span{
+    color: var(--accent-color);
+    text-decoration-line: underline;
+}
+
+/* #learning-card:hover  #cursor{
+    background-color: black;
+  } */
 
 
 

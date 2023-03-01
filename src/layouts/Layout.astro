@@ -1,7 +1,6 @@
 ---
-import '../styles/global.css'
-import logo from "../portfolio_images/logo-cg.png"
-
+import "../styles/global.css";
+import logo from "../portfolio_images/logo-cg.png";
 ---
 
 <!DOCTYPE html>
@@ -35,50 +34,104 @@ import logo from "../portfolio_images/logo-cg.png"
   </head>
   <body>
     <img
-  id="logo"
-  src={logo}
-  alt="logo"
-/>
-    <div id="body-wrapper">
-      <slot />
-    </div>
+      id="logo"
+      src={logo}
+      alt="logo"
+    />
+    <slot />
+
+    <div id="cursor"></div>
+
+    <footer>
+      <p>Made with Astro</p>
+      <p>Made by Me</p>
+      <p>Hosted on Github</p>
+    </footer>
   </body>
 </html>
 
 <style>
-  
-  #body-wrapper{
-    height: 100vh;
-    width: 100vw;
-    overflow-y: auto;
-    perspective: 10px;
-    overflow-x: hidden;
-  }
-
-  #logo{
+  #logo {
     position: fixed;
     z-index: 1000;
     top: 1rem;
     left: 1rem;
     width: 3.5vw;
   }
+
+  #cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    top: 0;
+    right: 50%;
+    background-color: var(--blackish);
+    border-radius: 100%;
+    transition: 0;
+    pointer-events: none;
+  }
+
+  footer{
+    display: flex;
+    background-color: var(--accent-color);
+    color: var(--blackish);
+    gap: 10%;
+    justify-content: center;
+  }
+
+  footer > p{
+    margin: 2rem 0;
+    font-weight: 800;
+  }
+
 </style>
 
 <script>
+  /////////////////text reveal script//////////////
+  const text = document.querySelectorAll(".anitext");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal-text");
+        return;
+      }
 
-const text = document.querySelectorAll('.anitext');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('reveal-text');
-      return;
-    }
-
-    // entry.target.classList.remove('reveal-text');
+      // entry.target.classList.remove('reveal-text');
+    });
   });
-});
 
-text.forEach(elem => {
-  observer.observe(elem);
-})
+  text.forEach((elem) => {
+    observer.observe(elem);
+  });
+
+  //////////////////////////////////////
+
+  ////////////////custom cursor script///////////
+
+  const card = document.getElementsByClassName("learning-card");
+  const cursor = document.getElementById("cursor");
+
+  document.addEventListener("mousemove", (systemCursor) => {
+    var x = systemCursor.clientX;
+    var y = systemCursor.clientY;
+    //  console.log(systemCursor);
+
+    cursor.style.left = x + "px";
+    cursor.style.top = y + "px";
+  });
+  // console.log();
+
+  for (let i = 0; i < card.length; i++) {
+    const tag = card.item(i);
+    tag.addEventListener("mouseenter", () => {
+      cursor.style.scale = "3";
+      // cursor.style.scale = "3";
+    });
+
+    tag.addEventListener("mouseleave", () => {
+      cursor.style.scale = "1";
+    });
+  }
+
+  ////////////////////////////////////////////
 </script>

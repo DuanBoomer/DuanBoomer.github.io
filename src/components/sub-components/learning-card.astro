@@ -7,7 +7,7 @@ const [cardWidth, cardColor, span] =
 ---
 
 <div
-  id="learning-card"
+  class="learning-card"
   style={{
     // width: '100%',
     backgroundColor: `var(${cardColor})`,
@@ -30,11 +30,13 @@ const [cardWidth, cardColor, span] =
     margin: 0;
     font-weight: 800;
     font-size: 50px;
+    color: white;
   }
 
   header {
     display: flex;
     align-items: center;
+    /* background-color: mediumseagreen; */
     gap: 2rem;
     margin-bottom: 1rem;
     /* background-color: red; */
@@ -47,20 +49,25 @@ const [cardWidth, cardColor, span] =
     font-size: 1.3rem;
   }
 
-  #learning-card {
+  .learning-card {
     margin: 0;
-    padding: 2rem;
+    padding: 3rem;
     border-radius: 1rem;
     color: var(--whiteish);
     transition-duration: 200ms;
-    min-width: 25rem;
+    /* min-width: 25rem; */
+    /* cursor: grab; */
     /* width: 100%; */
     /* width: var({cardWidth}); */
     /* background-color: var({cardColor}); */
   }
 
-  #learning-card:hover{
-    transform: scale(1.05);
+  .learning-card:hover{
+    transform: scale(1.1);
     box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+
+    /* cursor: crosshair; */
   }
+
+  
 </style>

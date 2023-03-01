@@ -4,135 +4,114 @@ import linkedinLogo from "../portfolio_images/linkedin-logo.png";
 import mediumLogo from "../portfolio_images/medium-logo.png";
 ---
 
-<div id="contact-me">
+<div style="min-height: 100vh; padding: 0 8%">
   <h2>Contact <span>Me</span></h2>
   <div id="contact-info">
-    <p>Email</p>
+    <p><span>Email</span></p>
     <p id="email">chirag1292003@gmail.com</p>
-    <p
-      id="resume"
-      class="span-all-rows">
-      Resume
-    </p>
-    <p>Socials</p>
-    <div class="inline-logos">
+    <p id="resume">Resume</p>
+    <p><span>Socials</span></p>
+
+    <div id="github">
       <img
         src={githubLogo}
         alt=""
       />
+    </div>
+
+    <div id="linkedin">
       <img
         src={linkedinLogo}
         alt=""
       />
     </div>
-    <img
-      id="medium"
-      class="start-center"
-      src={mediumLogo}
-      alt=""
-    />
+
+    <div id="medium">
+      <img
+        src={mediumLogo}
+        alt=""
+      />
+    </div>
   </div>
 </div>
 <style>
-  .span-two-cols {
+  /* ////setup/////// */
+  #email {
+    grid-column: span 2;
+  }
+
+  #resume {
+    grid-row: span 3;
+  }
+
+  #medium {
     grid-column-start: 2;
     grid-column-end: 4;
   }
 
-  .span-all-rows {
-    grid-row: span 3;
+  #contact-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* align-content: center; */
+    justify-items: center;
+    gap: 1rem;
   }
 
-  .inline-logos {
-    display: flex;
-    justify-content: space-between;
-    /* gap: 2rem; */
-  }
-
-  .start-center {
-    grid-column-start: 2;
-  }
-
-  h2 {
-    position: relative;
-    top: 5rem;
-    font-weight: 800;
-    font-size: 80px;
-    line-height: 97px;
-    margin: 0;
-    left: 8%;
-  }
-
-  img {
-    background-color: var(--greenish);
-    padding: 2rem;
-    /* object-fit: cover; */
-    /* width: 100%; */
-    width: 10.5rem;
+  #contact-info > * {
+    /* background-color: var(--accent-color); */
     border-radius: 1rem;
   }
 
-  p,
-  span {
-    text-decoration-line: underline;
-  }
+  /* ///////////////////// */
+
+  /* ///////////styling///////////// */
 
   p {
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 48px;
-    margin: 0;
-    /* text-align: center; */
-    /* vertical-align: middle; */
-  }
-
-  #email,
-  #resume {
-    text-decoration-line: none;
+    font-size: 2rem;
+    justify-self: left;
+    font-weight: 800;
   }
 
   #email {
-    margin: 0;
-    background-color: var(--greenish);
-    font-weight: 800;
-    font-size: 30px;
-    line-height: 36px;
-    padding: 1.5rem;
-    /* margin: 1rem 0; */
-    border-radius: 1rem;
-    color: var(--blackish);
+    display: flex;
+    justify-content: center;
+    /* justify-items: center; */
+    align-items: center;
+    align-self: center;
+    /* justify-self: center; */
+    font-size: 1.5rem;
+
+    /* vertical-align: middle; */
+    background-color: var(--accent-color);
+    color: var(--body-color);
+    width: 100%;
+    height: 100%;
   }
 
   #resume {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
     height: 100%;
-    background-color: var(--accent-color);
-    color: var(--body-color);
-    font-weight: 800;
-    font-size: 60px;
-    line-height: 73px;
     margin: 0;
-    border-radius: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--body-color);
+    background-color: var(--accent-color);
   }
 
-  #medium {
-    width: max-content;
+  #github, #linkedin, #medium {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--greenish);
   }
 
-  #contact-info {
-    display: grid;
-    position: relative;
-    gap: 2rem;
-    grid-template-columns: 1fr 1fr 1fr;
-    top: 10rem;
-    width: 80%;
-    left: 8%;
+  #github > img, #linkedin > img, #medium > img{
+    margin: 1rem;
   }
 
-  #contact-me {
-    min-height: 100vh;
-    /* background-color: blue; */
-  }
+  /* /////////////////// */
 </style>
