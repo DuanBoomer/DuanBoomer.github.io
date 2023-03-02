@@ -39,6 +39,12 @@ span{
     text-decoration-line: underline;
 }
 
+a{
+    cursor: none;
+    text-decoration: none;
+    color: inherit;
+}
+
 /* #learning-card:hover  #cursor{
     background-color: black;
   } */

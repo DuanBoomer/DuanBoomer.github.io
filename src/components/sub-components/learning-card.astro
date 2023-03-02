@@ -1,5 +1,5 @@
 ---
-const { image, title, desciption, cardState } = Astro.props;
+const { image, title, desciption, cardState, url } = Astro.props;
 // const cardState = 'red'
 
 const [cardWidth, cardColor, span] =
@@ -13,6 +13,7 @@ const [cardWidth, cardColor, span] =
     backgroundColor: `var(${cardColor})`,
     // gridColumn: `span ${span}`,
   }}>
+  <a href={url} target="_blank" rel="noopener noreferrer">
   <header>
     <img
       src={image}
@@ -23,6 +24,7 @@ const [cardWidth, cardColor, span] =
   <p>
     {desciption}
   </p>
+</a>
 </div>
 
 <style>
@@ -54,7 +56,7 @@ const [cardWidth, cardColor, span] =
     padding: 3rem;
     border-radius: 1rem;
     color: var(--whiteish);
-    transition-duration: 200ms;
+    transition-duration: 250ms;
     /* min-width: 25rem; */
     /* cursor: grab; */
     /* width: 100%; */

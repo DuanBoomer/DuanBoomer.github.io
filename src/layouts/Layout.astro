@@ -109,6 +109,9 @@ import logo from "../portfolio_images/logo-cg.png";
   ////////////////custom cursor script///////////
 
   const card = document.getElementsByClassName("learning-card");
+  const contact_fields = document.getElementsByClassName('contact-field');
+
+  // const total_elements = card.concat(contact_fields);
   const cursor = document.getElementById("cursor");
 
   document.addEventListener("mousemove", (systemCursor) => {
@@ -121,17 +124,37 @@ import logo from "../portfolio_images/logo-cg.png";
   });
   // console.log();
 
-  for (let i = 0; i < card.length; i++) {
-    const tag = card.item(i);
+  function addMouseEffects(elements){
+    for (let i = 0; i < elements.length; i++) {
+    const tag = elements.item(i);
     tag.addEventListener("mouseenter", () => {
       cursor.style.scale = "3";
+      cursor.style.backgroundColor = 'var(--whiteish)'
       // cursor.style.scale = "3";
     });
-
+    
     tag.addEventListener("mouseleave", () => {
       cursor.style.scale = "1";
+      cursor.style.backgroundColor = 'var(--blackish)'
     });
   }
+
+  }
+
+  addMouseEffects(card)
+  addMouseEffects(contact_fields)
+
+  // for (let i = 0; i < card.length; i++) {
+  //   const tag = card.item(i);
+  //   tag.addEventListener("mouseenter", () => {
+  //     cursor.style.scale = "3";
+  //     // cursor.style.scale = "3";
+  //   });
+
+  //   tag.addEventListener("mouseleave", () => {
+  //     cursor.style.scale = "1";
+  //   });
+  // }
 
   ////////////////////////////////////////////
 </script>

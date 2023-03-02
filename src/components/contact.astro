@@ -8,29 +8,35 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
   <h2>Contact <span>Me</span></h2>
   <div id="contact-info">
     <p><span>Email</span></p>
-    <p id="email">chirag1292003@gmail.com</p>
-    <p id="resume">Resume</p>
+    <p id="email" class="contact-field">chirag1292003@gmail.com</p>
+    <p id="resume" class="contact-field">Resume</p>
     <p><span>Socials</span></p>
 
-    <div id="github">
+    <div id="github" class="contact-field">
+      <a href="https://github.com/DuanBoomer" target="_blank" rel="noopener noreferrer">
       <img
         src={githubLogo}
         alt=""
       />
+    </a>
     </div>
 
-    <div id="linkedin">
+    <div id="linkedin" class="contact-field">
+      <a href="https://www.linkedin.com/in/chirag-ji-163a38221/" target="_blank" rel="noopener noreferrer">
       <img
         src={linkedinLogo}
         alt=""
       />
+    </a>
     </div>
 
-    <div id="medium">
+    <div id="medium" class="contact-field">
+      <a href="https://medium.com/@chirag1292003" target="_blank" rel="noopener noreferrer">
       <img
         src={mediumLogo}
         alt=""
       />
+    </a>
     </div>
   </div>
 </div>
@@ -54,7 +60,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     grid-template-columns: repeat(4, 1fr);
     /* align-content: center; */
     justify-items: center;
-    gap: 1rem;
+    gap: 2rem;
   }
 
   #contact-info > * {
@@ -107,10 +113,19 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     justify-content: center;
 
     background-color: var(--greenish);
+    /* cursor: none; */
   }
 
-  #github > img, #linkedin > img, #medium > img{
+  #github > a > img, #linkedin > a > img, #medium > a > img{
     margin: 1rem;
+  }
+
+  .contact-field{
+    transition-duration: 250ms;
+  }
+
+  .contact-field:hover{
+    transform: scale(1.1);
   }
 
   /* /////////////////// */
