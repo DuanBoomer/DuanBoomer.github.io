@@ -93,7 +93,7 @@ import headshot from "../portfolio_images/headshot.jpg";
   }
 
   #head-container {
-    height: 100vh;
+    min-height: 100vh;
     /* overflow: scroll; */
     /* transform-style: preserve-3d; */
     /* padding-left: 8%; */
@@ -102,5 +102,42 @@ import headshot from "../portfolio_images/headshot.jpg";
     /* display: grid; */
     /* grid-template-columns: 1fr 1fr; */
     /* z-index: -1000; */
+  }
+
+  @media(min-width: 768px){
+    #headshot{
+      position: static;
+      width: 50vw;
+    }
+
+    #head-container{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    h2{
+      color: var(--blackish);
+    }
+  }
+
+  @media(min-width:1024px){
+    #head-text{
+      margin-top: 35vh;
+    }
+
+    #headshot{
+      position: sticky;
+    }
+    h1{
+      font-size: max(6.5rem, 8vw);
+    }
+
+    h2{
+      font-size: max(1.2rem, 1.5vw);
+    }
+
+    p{
+      font-size: max(1.7rem, 2vw);
+    }
   }
 </style>

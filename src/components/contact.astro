@@ -4,7 +4,7 @@ import linkedinLogo from "../portfolio_images/linkedin-logo.png";
 import mediumLogo from "../portfolio_images/medium-logo.png";
 ---
 
-<div style="min-height: 100vh; padding: 0 8%">
+<div id="contact-me">
   <h2>Contact <span>Me</span></h2>
   <div id="contact-info">
     <p><span>Email</span></p>
@@ -189,9 +189,31 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     transition-duration: 250ms;
   }
 
+  #contact-me{
+    padding: 2rem;
+  }
+
   /* .contact-field:hover {
     transform: scale(1.1);
   } */
+
+  @media(min-width: 768px){
+    #email{
+      width: fit-content;
+      padding: 1rem 3rem;
+    }
+  }
+
+  @media(min-width: 1024px){
+    h2{
+      font-size: 3rem;
+    }
+
+    #contact-info{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 
   /* /////////////////// */
 </style>
