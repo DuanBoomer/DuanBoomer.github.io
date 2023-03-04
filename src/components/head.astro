@@ -26,27 +26,16 @@ import headshot from "../portfolio_images/headshot.jpg";
     height: 100vh;
     width: 100vw;
     object-fit: cover;
-    /* position: sticky; */
     position: absolute;
-    /* position: sticky; */
     top: 0;
     left: 0;
     z-index: -1;
-    /* overflow: scroll; */
-
-    /* transform: translate3d(0, 0, -10px) scale(1.75);
-    transform-style: preserve-3d; */
-
-    /* z-index: -100; */
   }
 
   h1 {
     font-weight: 900;
     font-size: 4rem;
     transition: 250ms;
-    /* position: absolute;
-    top: 0; */
-    /* font-size: 160px; */
     width: fit-content;
     margin: 0;
     color: var(--accent-color);
@@ -55,32 +44,17 @@ import headshot from "../portfolio_images/headshot.jpg";
   h2 {
     font-weight: 700;
     font-size: 0.85rem;
-    /* position: absolute;
-    top: 0; */
-    /* left: 0; */
-    /* font-size: 40px; */
     width: fit-content;
     text-align: right;
-    /* color: var(--accent-color); */
     color: white;
     transition: 250ms;
-    /* margin: 0; */
   }
 
   p {
-    /* position: absolute; */
-    /* bottom: 0; */
-
-    /* margin-top: 40vh; */
-    /* width: 60%; */
     font-weight: 700;
     font-size: 1.2rem;
     margin: 5rem 0 0 0;
     transition: 250ms;
-    /* color: ; */
-    /* position: absolute;
-    top: 15rem; */
-    /* font-size: 50px; */
     text-align: right;
     text-decoration-line: underline;
   }
@@ -89,70 +63,61 @@ import headshot from "../portfolio_images/headshot.jpg";
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding:0 2rem;
+    padding: 0 2rem;
     justify-content: center;
     height: 100vh;
-    /* padding-right: 8%; */
   }
 
   #head-container {
     min-height: 100vh;
-    /* overflow: scroll; */
-    /* transform-style: preserve-3d; */
-    /* padding-left: 8%; */
-    /* min-height: 200vh; */
-
-    /* display: grid; */
-    /* grid-template-columns: 1fr 1fr; */
-    /* z-index: -1000; */
   }
 
-  @media(min-width: 768px){
-    #headshot{
+  @media (min-width: 768px) {
+    #headshot {
       position: static;
       width: 50vw;
     }
 
-    #head-container{
+    #head-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
 
-    h2{
+    h2 {
       color: var(--blackish);
     }
   }
 
-  @media(min-width:1024px){
-    #head-text{
+  @media (min-width: 1024px) {
+    #head-text {
       margin-top: 35vh;
     }
 
-    #headshot{
+    #headshot {
       position: sticky;
     }
-    h1{
+    h1 {
       font-size: max(6.5rem, 8vw);
     }
 
-    h1:hover{
+    h1:hover {
       transform: scale(1.1);
     }
 
-    h2{
+    h2 {
       font-size: max(1.2rem, 1.5vw);
     }
 
-    h2:hover > span{
+    h2:hover > span {
       text-decoration-line: none;
       color: var(--blackish);
     }
 
-    p{
+    p {
       font-size: max(1.7rem, 2vw);
     }
 
-    p:hover{
+    p:hover {
       color: var(--blackish);
     }
   }
