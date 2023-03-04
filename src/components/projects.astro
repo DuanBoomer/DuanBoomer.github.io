@@ -2,12 +2,12 @@
   <h2>Projects</h2>
   <div id="projects">
     <!-- <div class="anitext"> -->
-      <p>Metropolis</p>
-      <p>Pastel Payment</p>
-      <p>Hand writing classification</p>
-      <p>Zombie Dodge</p>
+    <p class="project-name">Metropolis</p>
+    <p class="project-name">Pastel Payment</p>
+    <p class="project-name">Hand writing classification</p>
+    <p class="project-name">Zombie Dodge</p>
     <!-- </div> -->
-    </div>
+  </div>
 </div>
 
 <style>
@@ -19,6 +19,8 @@
     /* top: 10%; */
     font-weight: 800;
     font-size: 2rem;
+    transition: 250ms;
+    width: fit-content;
     /* font-size: 80px; */
     /* line-height: 97px; */
 
@@ -29,9 +31,11 @@
     /* margin: 1.5rem 0; */
     font-weight: 800;
     font-size: 2.5rem;
+    width: fit-content;
     /* font-size: 110px; */
     /* line-height: 133px; */
     color: var(--blackish);
+    transition: 250ms;
 
     /* word-wrap:normal; */
     /* width: 90vw; */
@@ -39,7 +43,7 @@
     /* background-color: red; */
   }
 
-  #projects{
+  #projects {
     /* position: relative; */
     /* top: 10%; */
     /* top: 5rem;
@@ -48,7 +52,7 @@
     /* background-color: RED; */
   }
 
-  #project-container{
+  #project-container {
     padding: 0 2rem;
     /* min-height: 100vh; */
     /* width: 50%; */
@@ -56,20 +60,28 @@
     /* background-color: yellow; */
   }
 
-  @media(min-width: 768px){
-    p{
+  @media (min-width: 768px) {
+    p {
       font-size: 3rem;
     }
   }
 
-  @media(min-width: 1024px){
-    h2{
+  @media (min-width: 1024px) {
+    h2 {
       font-size: 3rem;
     }
 
-    p{
+    h2:hover{
+      text-decoration-line: none;
+      color: var(--blackish);
+    }
+
+    p {
       font-size: 4rem;
     }
-  }
 
+    p:hover {
+      color: var(--accent-color);
+    }
+  }
 </style>

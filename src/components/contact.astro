@@ -7,7 +7,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
 <div id="contact-me">
   <h2>Contact <span>Me</span></h2>
   <div id="contact-info">
-    <p><span>Email</span></p>
+    <p id="email-text"><span>Email</span></p>
     <p
       id="email"
       class="contact-field">
@@ -80,11 +80,11 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
   #email {
     /* grid-column: span 2; */
   }
-  
+
   #resume {
     /* grid-row: span 3; */
   }
-  
+
   #medium {
     grid-column: span 2;
     /* grid-column-start: 2; */
@@ -99,7 +99,8 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     /* gap: 2rem; */
   }
 
-  #contact-info > *, #social-section > * {
+  #contact-info > *,
+  #social-section > * {
     /* background-color: var(--accent-color); */
     border-radius: 1rem;
   }
@@ -113,6 +114,12 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     font-weight: 800;
     margin-top: 3rem;
   }
+
+  h2:hover > span {
+    text-decoration-line: none;
+    color: var(--blackish);
+  }
+
   p {
     font-weight: 800;
     font-size: 1.5rem;
@@ -164,6 +171,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     width: fit-content;
     padding: 1rem;
     background-color: var(--greenish);
+    transition: 250ms;
     /* cursor: none; */
   }
 
@@ -174,7 +182,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     height: 4rem;
   }
 
-  #social-section{
+  #social-section {
     display: flex;
     flex-wrap: wrap;
     /* width: fit-content; */
@@ -189,7 +197,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     transition-duration: 250ms;
   }
 
-  #contact-me{
+  #contact-me {
     padding: 2rem;
   }
 
@@ -197,38 +205,45 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     transform: scale(1.1);
   } */
 
-  @media(min-width: 768px){
-    #email{
+  @media (min-width: 768px) {
+    #email {
       width: fit-content;
       padding: 1rem 3rem;
     }
   }
 
-  @media(min-width: 1024px){
-    h2{
+  @media (min-width: 1024px) {
+    h2 {
       font-size: 3rem;
     }
 
-    #contact-info{
+    #contact-info {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
 
-
-    #social-section{
+    #social-section {
       grid-column-start: 2;
     }
 
-    #socials-text{
+    #socials-text {
       grid-column-start: 1;
     }
 
-    #resume{
+    #resume {
       grid-row-start: 1;
       grid-row-end: 3;
       grid-column-start: 3;
     }
 
+    #github:hover,
+    #linkedin:hover,
+    #medium:hover,
+    #resume:hover,
+    #email:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 5px 3px rgb(0, 0, 0, 0.5);
+    }
   }
 
   /* /////////////////// */

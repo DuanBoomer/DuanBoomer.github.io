@@ -43,6 +43,7 @@ import headshot from "../portfolio_images/headshot.jpg";
   h1 {
     font-weight: 900;
     font-size: 4rem;
+    transition: 250ms;
     /* position: absolute;
     top: 0; */
     /* font-size: 160px; */
@@ -62,6 +63,7 @@ import headshot from "../portfolio_images/headshot.jpg";
     text-align: right;
     /* color: var(--accent-color); */
     color: white;
+    transition: 250ms;
     /* margin: 0; */
   }
 
@@ -74,6 +76,7 @@ import headshot from "../portfolio_images/headshot.jpg";
     font-weight: 700;
     font-size: 1.2rem;
     margin: 5rem 0 0 0;
+    transition: 250ms;
     /* color: ; */
     /* position: absolute;
     top: 15rem; */
@@ -132,12 +135,25 @@ import headshot from "../portfolio_images/headshot.jpg";
       font-size: max(6.5rem, 8vw);
     }
 
+    h1:hover{
+      transform: scale(1.1);
+    }
+
     h2{
       font-size: max(1.2rem, 1.5vw);
     }
 
+    h2:hover > span{
+      text-decoration-line: none;
+      color: var(--blackish);
+    }
+
     p{
       font-size: max(1.7rem, 2vw);
+    }
+
+    p:hover{
+      color: var(--blackish);
     }
   }
 </style>

@@ -45,6 +45,7 @@ import unitylLogo from "../portfolio_images/unity-logo.png";
     /* left: 8%; */
     font-weight: 800;
     font-size: 2rem;
+    /* width: fit-content; */
     /* font-size: 5rem; */
     /* line-height: 97px; */
     /* margin: 4% 0 0 8%; */
@@ -88,7 +89,12 @@ import unitylLogo from "../portfolio_images/unity-logo.png";
   @media(min-width: 1024px){
     h2{
       font-size: 3rem;
-      width: 45vw;
+      width: 35vw;
+    }
+    
+    h2:hover > span{
+      text-decoration-line: none;
+      color: var(--blackish);
     }
 
     #learning-cards{

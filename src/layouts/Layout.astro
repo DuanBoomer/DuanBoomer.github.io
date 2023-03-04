@@ -85,6 +85,7 @@ import logo from "../portfolio_images/logo-cg.png";
     /* gap: 1rem; */
     /* width: fit-contenct; */
     justify-content: space-evenly;
+    transition: 250ms;
   }
 
   footer > p {
@@ -98,6 +99,10 @@ import logo from "../portfolio_images/logo-cg.png";
     #cursor{
       display: block;
     }
+
+    footer:hover{
+      color: var(--whiteish);
+    }
   }
 </style>
 
@@ -105,6 +110,7 @@ import logo from "../portfolio_images/logo-cg.png";
   ////////////////custom cursor script///////////
   const card = document.getElementsByClassName("learning-card");
   const contact_fields = document.getElementsByClassName("contact-field");
+  const project_names = document.getElementsByClassName("project-name");
 
   const cursor = document.getElementById("cursor");
 
@@ -133,6 +139,7 @@ import logo from "../portfolio_images/logo-cg.png";
 
   addMouseEffects(card);
   addMouseEffects(contact_fields);
+  addMouseEffects(project_names);
 
   ////////////////////////////////////////////
 </script>
