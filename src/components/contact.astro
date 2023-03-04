@@ -19,7 +19,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
       >
     </p>
 
-    <p><span>Socials</span></p>
+    <p id="socials-text"><span>Socials</span></p>
     <section id="social-section">
       <div
         id="github"
@@ -211,8 +211,24 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
 
     #contact-info{
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
     }
+
+
+    #social-section{
+      grid-column-start: 2;
+    }
+
+    #socials-text{
+      grid-column-start: 1;
+    }
+
+    #resume{
+      grid-row-start: 1;
+      grid-row-end: 3;
+      grid-column-start: 3;
+    }
+
   }
 
   /* /////////////////// */
