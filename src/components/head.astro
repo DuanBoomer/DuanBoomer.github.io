@@ -9,9 +9,8 @@ import headshot from "../portfolio_images/headshot.jpg";
     alt="headshot"
   />
   <div id="head-text">
-    <h1 class="anitext">Chirag</h1>
-    <h2 class="anitext">A Student of Life <br /> <span>Lifetime learner</span> </h2>
-
+    <h1>Chirag</h1>
+    <h2>A Student of Life <br /> <span>Lifetime learner</span></h2>
     <p>
       I’m a man who is trying to better his life by throwing himself into
       tireless work and skill development. I’m a total detail freak. I’m often
@@ -25,8 +24,15 @@ import headshot from "../portfolio_images/headshot.jpg";
 <style>
   #headshot {
     height: 100vh;
-    position: sticky;
+    width: 100vw;
+    object-fit: cover;
+    /* position: sticky; */
+    position: absolute;
+    /* position: sticky; */
     top: 0;
+    left: 0;
+    z-index: -1;
+    /* overflow: scroll; */
 
     /* transform: translate3d(0, 0, -10px) scale(1.75);
     transform-style: preserve-3d; */
@@ -36,46 +42,65 @@ import headshot from "../portfolio_images/headshot.jpg";
 
   h1 {
     font-weight: 900;
-    font-size: 160px;
+    font-size: 4rem;
+    /* position: absolute;
+    top: 0; */
+    /* font-size: 160px; */
     width: fit-content;
-    margin: 20vh 0;
+    margin: 0;
     color: var(--accent-color);
   }
 
   h2 {
-    font-weight: 600;
-    font-size: 40px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    /* position: absolute;
+    top: 0; */
+    /* left: 0; */
+    /* font-size: 40px; */
     width: fit-content;
     text-align: right;
-    margin: 0;
+    /* color: var(--accent-color); */
+    color: white;
+    /* margin: 0; */
   }
 
   p {
     /* position: absolute; */
     /* bottom: 0; */
 
-    margin-top: 40vh;
+    /* margin-top: 40vh; */
     /* width: 60%; */
     font-weight: 700;
-    font-size: 50px;
+    font-size: 1.2rem;
+    margin: 5rem 0 0 0;
+    /* color: ; */
+    /* position: absolute;
+    top: 15rem; */
+    /* font-size: 50px; */
     text-align: right;
     text-decoration-line: underline;
   }
 
-  #head-text{
+  #head-text {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding-right: 8%;
+    padding:0 2rem;
+    justify-content: center;
+    height: 100vh;
+    /* padding-right: 8%; */
   }
 
   #head-container {
+    height: 100vh;
+    /* overflow: scroll; */
     /* transform-style: preserve-3d; */
     /* padding-left: 8%; */
-    min-height: 200vh;
+    /* min-height: 200vh; */
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
     /* z-index: -1000; */
   }
 </style>
