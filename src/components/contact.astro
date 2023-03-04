@@ -63,16 +63,14 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
         </a>
       </div>
     </section>
-    <p
+    <a
       id="resume"
-      class="contact-field">
-      <a
-        href="https://drive.google.com/file/d/1i0d69cs8ObUZCr7S-2kni0At5iTNEAbM/view?usp=share_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Resume</a
-      >
-    </p>
+      class="contact-field"
+      href="https://drive.google.com/file/d/1i0d69cs8ObUZCr7S-2kni0At5iTNEAbM/view?usp=share_link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <p>Resume</p>
+    </a>
   </div>
 </div>
 <style>
@@ -80,8 +78,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     grid-column: span 2;
   }
 
-  #contact-info > *,
-  #social-section > * {
+  .contact-field {
     border-radius: 1rem;
   }
 
@@ -99,7 +96,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
   p {
     font-weight: 800;
     font-size: 1.5rem;
-    margin: 2rem 0 0 0;
+    /* margin: 2rem 0 0 0; */
   }
 
   #email {
@@ -185,6 +182,9 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
       grid-row-start: 1;
       grid-row-end: 3;
       grid-column-start: 3;
+      /* vertical-align: center; */
+      /* padding: 50% 0; */
+      /* height: 30vh; */
     }
 
     #github:hover,
