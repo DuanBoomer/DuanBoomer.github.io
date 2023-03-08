@@ -72,12 +72,13 @@ import logo from "../portfolio_images/logo-cg.png";
     top: 0;
     right: 50%;
     /* background-color: red; */
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 100%;
-    transition: 0;
+    transition: 0.1s;
     pointer-events: none;
     display: none;
     z-index: 999;
+    mix-blend-mode: difference;
   }
 
   footer {
@@ -101,7 +102,7 @@ import logo from "../portfolio_images/logo-cg.png";
     }
 
     footer:hover {
-      color: var(--accent-color);
+      color: var(--shadow-background);
     }
   }
 </style>
@@ -111,6 +112,7 @@ import logo from "../portfolio_images/logo-cg.png";
   const card = document.getElementsByClassName("learning-card");
   const contact_fields = document.getElementsByClassName("contact-field");
   const project_names = document.getElementsByClassName("project-name");
+  const spans = document.getElementsByTagName('span');
 
   const cursor = document.getElementById("cursor");
 
@@ -140,6 +142,7 @@ import logo from "../portfolio_images/logo-cg.png";
   addMouseEffects(card);
   addMouseEffects(contact_fields);
   addMouseEffects(project_names);
+  addMouseEffects(spans);
 
   ////////////////////////////////////////////
 </script>
