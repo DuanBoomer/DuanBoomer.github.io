@@ -1,38 +1,79 @@
+---
+import metropolis_image from "../portfolio_images/headshot.jpg";
+import pastelPayment_image from "../portfolio_images/flutter-logo.png";
+import handWriting_image from "../portfolio_images/medium-logo.png";
+import zombieDodge_image from "../portfolio_images/react-logo.png";
+---
+
 <div id="project-container">
   <h2>Projects</h2>
   <div id="projects">
     <p class="project-name">
+      <img
+        class="project-image"
+        src={metropolis_image}
+        alt=""
+      />
       <a
         href="https://github.com/DuanBoomer/metropolis"
         target="_blank"
         rel="noopener noreferrer"
-        >Metropolis</a>
+        >Metropolis</a
+      >
     </p>
     <p class="project-name">
+      <img
+        class="project-image"
+        src={pastelPayment_image}
+        alt=""
+      />
       <a
         href="https://github.com/DuanBoomer/Pastel-Fintect-Page-Flutter"
         target="_blank"
         rel="noopener noreferrer"
-        >Pastel Payment</a>
+        >Pastel Payment</a
+      >
     </p>
     <p class="project-name">
+      <img
+        class="project-image"
+        src={handWriting_image}
+        alt=""
+      />
       <a
         href="https://github.com/DuanBoomer"
         target="_blank"
         rel="noopener noreferrer"
-        >Hand writing classification</a>
+        >Hand writing classification</a
+      >
     </p>
     <p class="project-name">
+      <img
+        class="project-image"
+        src={zombieDodge_image}
+        alt=""
+      />
       <a
         href="https://github.com/DuanBoomer"
         target="_blank"
         rel="noopener noreferrer"
-        >Zombie Dodge</a>
+        >Zombie Dodge</a
+      >
     </p>
   </div>
 </div>
 
 <style>
+  /* \\\\\\\\\\\\\\\ */
+
+  .project-image {
+    position: fixed;
+    width: 16rem;
+    display: none;
+    transition: 0.1s;
+  }
+
+  /* \\\\\\\\\\\\\\\\\\\\ */
   h2 {
     font-weight: 800;
     font-size: 2rem;
@@ -78,5 +119,29 @@
     p:hover {
       color: var(--dominant-color);
     }
+
+    p:hover > .project-image {
+      display: block;
+    }
   }
 </style>
+
+<script>
+  const images = document.getElementsByClassName("project-image");
+
+  function addMouseEffects(elements) {
+    for (let i = 0; i < elements.length; i++) {
+      const tag = elements.item(i);
+
+      document.addEventListener("mousemove", (systemCursor) => {
+        var x = systemCursor.clientX;
+        var y = systemCursor.clientY;
+
+        tag.style.left = x + "px";
+        tag.style.top = y + "px";
+      });
+    }
+  }
+
+  addMouseEffects(images);
+</script>
