@@ -23,13 +23,14 @@ import headshot from "../portfolio_images/headshot.jpg";
 
 <style>
   #headshot {
-    height: 100vh;
-    width: 100vw;
+    height: 25rem;
+    width: min(20rem, 70vw);
     object-fit: cover;
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+    bottom: -3rem;
+    right: 0;
+    z-index: 1;
+    border-radius: 1rem;
   }
 
   h1 {
@@ -37,45 +38,51 @@ import headshot from "../portfolio_images/headshot.jpg";
     font-size: 4rem;
     transition: 250ms;
     width: fit-content;
-    margin: 0;
-    color: var(--accent-color);
+    margin: 4rem 0 0 0;
+    color: var(--complementary-color);
+    z-index: 10;
   }
 
   h2 {
     font-weight: 700;
     font-size: 0.85rem;
     width: fit-content;
-    text-align: right;
-    color: white;
     transition: 250ms;
+    color: var(--complementary-color);
+    z-index: 10;
   }
 
   p {
     font-weight: 700;
     font-size: 1.2rem;
-    margin: 5rem 0 0 0;
     transition: 250ms;
-    text-align: right;
+    max-width: max(25rem, 50vw);
     text-decoration-line: underline;
+
+    color: var(--complementary-color);
+    z-index: 10;
   }
 
   #head-text {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     padding: 0 2rem;
-    justify-content: center;
     height: 100vh;
   }
 
   #head-container {
     min-height: 100vh;
+    background-color: var(--dominant-color);
+    /* margin-bottom: 5rem; */
   }
 
   @media (min-width: 768px) {
     #headshot {
       position: static;
       width: 50vw;
+      height: 100vh;
+      border-radius: 0;
+      object-fit: cover;
     }
 
     #head-container {
@@ -84,11 +91,26 @@ import headshot from "../portfolio_images/headshot.jpg";
     }
 
     h2 {
-      color: var(--blackish);
+      text-align: right;
+    }
+
+    p {
+      margin: 5rem 0 0 0;
+      text-align: right;
+      width: auto;
+    }
+
+    #head-text {
+      align-items: flex-end;
+      justify-content: center;
     }
   }
 
   @media (min-width: 1024px) {
+    #headshot {
+      height: 100%;
+    }
+
     #head-text {
       margin-top: 35vh;
     }
@@ -108,17 +130,17 @@ import headshot from "../portfolio_images/headshot.jpg";
       font-size: max(1.2rem, 1.5vw);
     }
 
-    h2:hover > span {
+    /* h2:hover > span {
       text-decoration-line: none;
-      color: var(--blackish);
-    }
+      color: var(--complementary-color);
+    } */
 
     p {
       font-size: max(1.7rem, 2vw);
     }
 
     p:hover {
-      color: var(--blackish);
+      color: var(--complementary-color);
     }
   }
 </style>

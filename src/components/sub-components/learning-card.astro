@@ -1,12 +1,12 @@
 ---
 const { image, title, desciption, cardState, url } = Astro.props;
-const [cardColor] = cardState === "green" ? ["--greenish"] : ["--accent-color"];
+// const [cardColor] = cardState === "green" ? ["--greenish"] : ["--accent-color"];
 ---
 
 <div
   class="learning-card"
   style={{
-    backgroundColor: `var(${cardColor})`,
+    backgroundColor: `var(--dominant-color)`,
   }}>
   <a
     href={url}
@@ -47,13 +47,14 @@ const [cardColor] = cardState === "green" ? ["--greenish"] : ["--accent-color"];
   p {
     margin: 0;
     font-size: 1rem;
+    color: white;
   }
 
   .learning-card {
     margin: 0;
     padding: 1.5rem 2rem;
     border-radius: 1rem;
-    color: var(--whiteish);
+    /* color: white; */
     transition-duration: 250ms;
   }
 

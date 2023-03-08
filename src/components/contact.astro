@@ -76,6 +76,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
 <style>
   #medium {
     grid-column: span 2;
+    /* width: 90%; */
   }
 
   .contact-field {
@@ -86,11 +87,13 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     font-size: 2rem;
     font-weight: 800;
     margin-top: 3rem;
+    width: fit-content;
+    margin: 1rem 0;
   }
 
   h2:hover > span {
     text-decoration-line: none;
-    color: var(--blackish);
+    /* color: var(--blackish); */
   }
 
   p {
@@ -107,8 +110,8 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     font-size: 1rem;
     margin: 1rem 0;
     padding: 1rem;
-    background-color: var(--accent-color);
-    color: var(--body-color);
+    background-color: var(--dominant-color);
+    color: white;
   }
 
   #resume {
@@ -117,8 +120,8 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--body-color);
-    background-color: var(--accent-color);
+    background-color: var(--dominant-color);
+    color: var(--complementary-color);
   }
 
   #github,
@@ -127,8 +130,8 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     display: flex;
     justify-content: center;
     width: fit-content;
-    padding: 1rem;
-    background-color: var(--greenish);
+    padding: 2rem;
+    background-color: var(--dominant-color);
     transition: 250ms;
   }
 
@@ -149,8 +152,18 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     transition-duration: 250ms;
   }
 
+  #email-text, #socials-text{
+    color: var(--dominant-color);
+  }
+  #email-text > span, #socials-text > span{
+    text-decoration-thickness: 0.3rem;
+  }
+
+
+
   #contact-me {
     padding: 2rem;
+    /* background-color: var(--shadow-background); */
   }
 
   @media (min-width: 768px) {

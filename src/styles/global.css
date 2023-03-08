@@ -1,13 +1,11 @@
 :root {
-    --body-color: #b7e3e4;
-    --accent-color: #f03f35;
-    --greenish: #58B89D;
-    --blackish: #262626;
-    --whiteish: #fafafa;
+    --dominant-color: #121738;
+    --complementary-color: #d17c78;
+    --accent-color: black;
+    --black: #262626;
+    --white: #fafafa;
 
-    --delay: 0;
-    --duration: 800ms;
-    --iterations: 1;
+    --shadow-background: #f6f6f6;
 }
 
 html {
@@ -18,14 +16,19 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--body-color);
-    color: var(--accent-color);
+    /* background-color: var(--body-color); */
+    /* color: var(--accent-color); */
     overflow-x: hidden;
-    cursor: none;
+    /* cursor: none; */
 }
 
 h1, h2, h3 , h4, h5, h6{
-    color: var(--blackish);
+    color: var(--dominant-color);
+    cursor: default;
+}
+
+p{
+    cursor: default;
 }
 
 h2{
@@ -35,13 +38,22 @@ h2{
 }
 
 span{
-    color: var(--accent-color);
+    color: var(--complementary-color);
+    /* text-decoration-style:; */
     text-decoration-line: underline;
+    text-decoration-thickness: 0.6rem;
+    text-decoration-color: var(--dominant-color);
     transition: 250ms;
 }
 
+span:hover{
+    /* text-decoration-thickness: 1.5rem; */
+    /* text-decoration-style:; */
+    color: inherit;
+}
+
 a{
-    cursor: none;
+    /* cursor: none; */
     text-decoration: none;
     color: inherit;
 }

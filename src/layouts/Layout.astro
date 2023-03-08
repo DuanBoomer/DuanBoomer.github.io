@@ -67,21 +67,23 @@ import logo from "../portfolio_images/logo-cg.png";
 
   #cursor {
     position: fixed;
-    width: 12px;
-    height: 12px;
+    width: 2.8rem;
+    height: 2.8rem;
     top: 0;
     right: 50%;
-    background-color: var(--blackish);
+    /* background-color: red; */
+    border: 2px solid black;
     border-radius: 100%;
     transition: 0;
     pointer-events: none;
     display: none;
+    z-index: 999;
   }
 
   footer {
     display: flex;
-    background-color: var(--accent-color);
-    color: var(--blackish);
+    background-color: var(--dominant-color);
+    color: var(--complementary-color);
     justify-content: space-evenly;
     transition: 250ms;
   }
@@ -99,7 +101,7 @@ import logo from "../portfolio_images/logo-cg.png";
     }
 
     footer:hover {
-      color: var(--whiteish);
+      color: var(--accent-color);
     }
   }
 </style>
@@ -116,21 +118,21 @@ import logo from "../portfolio_images/logo-cg.png";
     var x = systemCursor.clientX;
     var y = systemCursor.clientY;
 
-    cursor.style.left = x + "px";
-    cursor.style.top = y + "px";
+    cursor.style.left = x - 16.8 + "px";
+    cursor.style.top = y - 16.8 + "px";
   });
 
   function addMouseEffects(elements) {
     for (let i = 0; i < elements.length; i++) {
       const tag = elements.item(i);
       tag.addEventListener("mouseenter", () => {
-        cursor.style.scale = "3";
-        cursor.style.backgroundColor = "var(--whiteish)";
+        cursor.style.scale = "1.3";
+        // cursor.style.backgroundColor = "var(--whiteish)";
       });
 
       tag.addEventListener("mouseleave", () => {
         cursor.style.scale = "1";
-        cursor.style.backgroundColor = "var(--blackish)";
+        // cursor.style.backgroundColor = "transparent";
       });
     }
   }
