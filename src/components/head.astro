@@ -1,5 +1,6 @@
 ---
-import headshot from "../portfolio_images/headshot.jpg";
+// import headshot from "../portfolio_images/headshot.jpg";
+import headshot from "../portfolio_images/portrait.png";
 ---
 
 <div id="head-container">
@@ -31,6 +32,7 @@ import headshot from "../portfolio_images/headshot.jpg";
     right: 0;
     z-index: 1;
     border-radius: 1rem;
+    margin-right: 1rem;
   }
 
   h1 {
@@ -108,7 +110,9 @@ import headshot from "../portfolio_images/headshot.jpg";
 
   @media (min-width: 1024px) {
     #headshot {
-      height: 100%;
+      height:100%;
+      filter: grayscale(100%);
+      transition: 250ms;
     }
 
     #head-text {
@@ -141,6 +145,10 @@ import headshot from "../portfolio_images/headshot.jpg";
 
     p:hover {
       color: var(--complementary-color);
+    }
+
+    #headshot:hover{
+      filter: none;
     }
   }
 </style>
