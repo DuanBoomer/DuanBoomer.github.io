@@ -1,8 +1,11 @@
 ---
-import metropolis_image from "../portfolio_images/metropolis-logo.png";
-import pastelPayment_image from "../portfolio_images/pastel-payment-card.png";
-import handWriting_image from "../portfolio_images/hand-writing.png";
-import zombieDodge_image from "../portfolio_images/zombie-dodge.png";
+// import metropolis_image from "../portfolio_images/metropolis-logo.png";
+// import pastelPayment_image from "../portfolio_images/pastel-payment-card.png";
+import handWriting_image from "../portfolio_images/project-images/hand-writing.png";
+// import zombieDodge_image from "../portfolio_images/zombie-dodge.png";
+import capuchin_bird_image from "../portfolio_images/project-images/capuchin-bird.png";
+import lego_image from "../portfolio_images/project-images/lego-toys.jpg";
+import mpg_image from "../portfolio_images/project-images/mpg.jpg";
 ---
 
 <div id="project-container">
@@ -11,27 +14,27 @@ import zombieDodge_image from "../portfolio_images/zombie-dodge.png";
     <p class="project-name">
       <img
         class="project-image"
-        src={metropolis_image}
+        src={mpg_image}
         alt=""
       />
       <a
-        href="https://github.com/DuanBoomer/metropolis"
+        href="https://www.kaggle.com/code/duanboomer/mpg-prediction-model"
         target="_blank"
         rel="noopener noreferrer"
-        >Metropolis</a
+        >Miles per Gallon (MPG) Predictor</a
       >
     </p>
     <p class="project-name">
       <img
         class="project-image"
-        src={pastelPayment_image}
+        src={lego_image}
         alt=""
       />
       <a
-        href="https://github.com/DuanBoomer/Pastel-Fintect-Page-Flutter"
+        href="https://www.kaggle.com/code/duanboomer/lego-toys-classification"
         target="_blank"
         rel="noopener noreferrer"
-        >Pastel Payment</a
+        >Lego Toys Classifier</a
       >
     </p>
     <p class="project-name">
@@ -41,23 +44,23 @@ import zombieDodge_image from "../portfolio_images/zombie-dodge.png";
         alt=""
       />
       <a
-        href="https://github.com/DuanBoomer"
+        href="https://www.kaggle.com/code/duanboomer/handwriting-classification/notebook"
         target="_blank"
         rel="noopener noreferrer"
-        >Hand writing classification</a
+        >Hand Writing Recognition </a
       >
     </p>
     <p class="project-name">
       <img
         class="project-image"
-        src={zombieDodge_image}
+        src={capuchin_bird_image}
         alt=""
       />
       <a
-        href="https://github.com/DuanBoomer"
+        href="https://www.kaggle.com/code/duanboomer/capuchin-bird-audio-classification"
         target="_blank"
         rel="noopener noreferrer"
-        >Zombie Dodge</a
+        >Capuchin Bird Identifier</a
       >
     </p>
   </div>
@@ -137,7 +140,7 @@ import zombieDodge_image from "../portfolio_images/zombie-dodge.png";
         var x = systemCursor.clientX;
         var y = systemCursor.clientY;
 
-        tag.style.left = x + "px";
+        tag.style.left = x + 20 + "px";
         tag.style.top = y + "px";
       });
     }

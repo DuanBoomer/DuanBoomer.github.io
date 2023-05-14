@@ -1,7 +1,8 @@
 ---
 import githubLogo from "../portfolio_images/github-logo.png";
 import linkedinLogo from "../portfolio_images/linkedin-logo.png";
-import mediumLogo from "../portfolio_images/medium-logo.png";
+import mediumLogo from "../portfolio_images/medium-logo-only.png";
+import kaggleLogo from "../portfolio_images/kaggle-logo.png";
 ---
 
 <div id="contact-me">
@@ -62,6 +63,19 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
           />
         </a>
       </div>
+      <div
+        id="kaggle"
+        class="contact-field">
+        <a
+          href="https://www.kaggle.com/duanboomer/code"
+          target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src={kaggleLogo}
+            alt=""
+          />
+        </a>
+      </div>
     </section>
     <a
       id="resume"
@@ -74,10 +88,10 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
   </div>
 </div>
 <style>
-  #medium {
-    grid-column: span 2;
+  /* #medium { */
+    /* grid-column: span 2; */
     /* width: 90%; */
-  }
+  /* } */
 
   .contact-field {
     border-radius: 1rem;
@@ -121,7 +135,8 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
 
   #github,
   #linkedin,
-  #medium {
+  #medium,
+  #kaggle {
     display: flex;
     justify-content: center;
     width: fit-content;
@@ -132,8 +147,11 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
 
   #github > a > img,
   #linkedin > a > img,
-  #medium > a > img {
+  #medium > a > img,
+  #kaggle > a > img {
     height: 4rem;
+    /* width: 4.5rem; */
+    /* object-fit: cover; */
   }
 
   #social-section {
@@ -147,14 +165,14 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     transition-duration: 250ms;
   }
 
-  #email-text, #socials-text{
+  #email-text,
+  #socials-text {
     color: var(--dominant-color);
   }
-  #email-text > span, #socials-text > span{
+  #email-text > span,
+  #socials-text > span {
     text-decoration-thickness: 0.3rem;
   }
-
-
 
   #contact-me {
     padding: 2rem;
@@ -197,6 +215,7 @@ import mediumLogo from "../portfolio_images/medium-logo.png";
     }
 
     #github:hover,
+    #kaggle:hover,
     #linkedin:hover,
     #medium:hover,
     #resume:hover,
