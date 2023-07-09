@@ -16,6 +16,7 @@ const { image, title, desciption, url } = Astro.props;
       <img
         src={image}
         alt=""
+        loading="lazy"
       />
       <h3>{title}</h3>
     </header>
