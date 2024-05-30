@@ -1,7 +1,4 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-export default defineConfig({
-    site: 'https://duanboomer.github.io',
-    // base: '/DuanBoomer.github.io',
-  })
+export default defineConfig({});

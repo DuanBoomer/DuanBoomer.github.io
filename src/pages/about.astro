@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout
+	title='About | Chirag'
+	description="About page of Chirag's portfolio">
+	<div class='stack gap-20'>
+		<main class='wrapper about'>
+			<Hero
+				title='About'
+				tagline='Thanks for stopping by. Read below to learn more about myself and my background.'>
+				<img
+					width='1553'
+					height='873'
+					src='/assets/solo-stage-shot-on-mic-stand.jpg'
+					alt='Chirag standing at the podium of devfest new delhi 2023'
+					loading='lazy'
+					decoding='async'
+				/>
+			</Hero>
+
+			<section>
+				<h2 class='section-title'>Background</h2>
+				<div class='content'>
+					<p>
+						Hi, I am Chirag, a shy introverted observant young adult. I have
+						built stuff ranging through the whole spectrum o the technological
+						industry.
+					</p>
+					<p>
+						Since childhood I was ever curious learning and observing everything
+						at hand. Pragramming gave me a way to channel my curiosity and
+						creativity. I am also fond of art and music.
+					</p>
+					<p>
+						My approach to building stuff is this, <span
+							>find what you want to build and then learn everything required in
+							order to build it in the best way possible</span
+						>. I have built over 15 projects major and minor combined using this
+						as my guiding principle. I have also read 10+ books on self
+						improvement and business.
+					</p>
+					<p>
+						I do programming to satisfy my knack of curiosity. For me
+						programming is art and I am the artist.
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2 class='section-title'>Skills</h2>
+				<div class='content'>
+					<p>
+						<span>Data Analysis :</span>
+						<li>Python</li>
+						<li>Numpy</li>
+						<li>Pandas</li>
+						<li>Matplotlib</li>
+						<li>Seaborn</li>
+						<li>Scrapy</li>
+						<li>SQL</li>
+					</p>
+
+					<p>
+						<span>Machine Learning :</span>
+						<li>Tensorflow</li>
+						<li>Keras</li>
+						<li>Scikit-Learn</li>
+						<li>Exploratory Data Analysis</li>
+					</p>
+					<p>
+						<span>Web Development :</span>
+						<li>MongoDB</li>
+						<li>Git/GitHub</li>
+						<li>FastAPI</li>
+						<li>Unicorn</li>
+						<li>ReactJS</li>
+						<li>HTML</li>
+						<li>CSS</li>
+						<li>JavaScript</li>
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	span {
+		font-weight: bold;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	p {
+		margin-top: 1rem;
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>
