@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+
+const projects = (await getCollection('work')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+---
+
+<BaseLayout
+	title='Reading | Chirag'
+	description='The books that chirag has read, currently reading and wants to read'>
+	<div class='stack gap-20'>
+		<main class='wrapper stack gap-8'>
+			<Hero
+				title='Reads'
+				tagline='The books that I have read, currently reading and want to read.'
+				align='start'
+			/>
+			<h3>Current reads</h3>
+			<h3>Finished</h3>
+			<h3>To read</h3>
+			<!-- <Grid variant='offset'>
+				{
+					projects.map((project) => (
+						<li>
+							<PortfolioPreview project={project} />
+						</li>
+					))
+				}
+			</Grid> -->
+		</main>
+		<!-- <Hero title='More Coming Soon ⌛' />
+		<ContactCTA /> -->
+	</div>
+</BaseLayout>

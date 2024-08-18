@@ -1,8 +1,13 @@
 ---
 import Hero from '../components/Hero.astro';
+import CallToAction from '../components/CallToAction.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Not Found" description="404 Error — this page was not found">
-	<Hero title="Page Not Found" tagline="Not found" />
+	<Hero title="🙈"/>
+	<Hero title="Page Not Found" tagline="Go back to Home Page" />
+	<div style="width: 10rem;align-self: center;margin-top: 1rem;">
+		<CallToAction href="/">Home</CallToAction>
+	</div>
 </BaseLayout>
