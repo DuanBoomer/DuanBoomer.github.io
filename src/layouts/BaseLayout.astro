@@ -4,7 +4,22 @@ import '../styles/global.css';
 const {
 	title = 'DBAI',
 	description = 'A modern blog landing page with editorial layout and thoughtful design.',
+	canonical,
+	image,
+	type = 'website',
+	author = 'DBAI',
+	robots = 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+	structuredData,
 } = Astro.props;
+
+const siteName = 'DBAI';
+const canonicalUrl =
+	canonical ??
+	(Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.toString());
+const imageUrl =
+	image ??
+	(Astro.site ? new URL('/assets/logo-round.svg', Astro.site).toString() : '/assets/logo-round.svg');
+const rssUrl = Astro.site ? new URL('/rss.xml', Astro.site).toString() : '/rss.xml';
 ---
 
 <!doctype html>
@@ -15,7 +30,26 @@ const {
 			name="viewport"
 			content="width=device-width, initial-scale=1, viewport-fit=cover"
 		/>
+		<meta name="robots" content={robots} />
+		<meta name="author" content={author} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<meta name="theme-color" content="#f6f2ec" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0d1113" media="(prefers-color-scheme: dark)" />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={imageUrl} />
+		<meta property="og:image:alt" content={`${siteName} logo`} />
+		<meta property="og:locale" content="en_US" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageUrl} />
+		<link rel="alternate" type="application/rss+xml" title={`${siteName} RSS`} href={rssUrl} />
 		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,6 +57,11 @@ const {
 			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Manrope:wght@300;400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
+		{structuredData ? (
+			<script type="application/ld+json">
+				{JSON.stringify(structuredData)}
+			</script>
+		) : null}
 		<script is:inline>
 			(() => {
 				const stored = localStorage.getItem('theme');

@@ -7,6 +7,23 @@ import '../../styles/blog.css';
 const title = 'Blog | DBAI';
 const description =
 	'Latest posts on Copilot Studio, Microsoft AI, and practical enterprise AI delivery.';
+const siteUrl = Astro.site?.toString();
+const baseUrl = siteUrl ?? Astro.url.origin;
+const canonical = new URL('/blog/', baseUrl).toString();
+const logoUrl = new URL('/assets/logo-round.svg', baseUrl).toString();
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'Blog',
+	name: 'DBAI',
+	url: canonical,
+	description,
+	publisher: {
+		'@type': 'Organization',
+		name: 'DBAI',
+		url: siteUrl ?? baseUrl,
+		logo: logoUrl ? { '@type': 'ImageObject', url: logoUrl } : undefined,
+	},
+};
 
 const posts = (await getCollection('blog'))
 	.filter((post) => !post.data.draft)
@@ -20,7 +37,11 @@ const formatDate = (date) =>
 	});
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+	title={title}
+	description={description}
+	canonical={canonical}
+	structuredData={structuredData}>
 	<a class="skip-link" href="#main">Skip to content</a>
 	<div class="page page--blog">
 		<header class="site-header container">

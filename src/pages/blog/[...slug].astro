@@ -24,9 +24,37 @@ const formattedDate = post.data.publishDate.toLocaleDateString('en-US', {
 	day: 'numeric',
 	year: 'numeric',
 });
+const baseUrl = Astro.site?.toString() ?? Astro.url.origin;
+const canonical = new URL(`/blog/${post.slug}/`, baseUrl).toString();
+const imageUrl = post.data.hero ? new URL(post.data.hero, baseUrl).toString() : undefined;
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	headline: post.data.title,
+	description: post.data.description,
+	datePublished: post.data.publishDate.toISOString(),
+	author: {
+		'@type': 'Person',
+		name: post.data.author ?? 'DBAI',
+	},
+	publisher: {
+		'@type': 'Organization',
+		name: 'DBAI',
+		url: baseUrl,
+	},
+	mainEntityOfPage: canonical,
+	image: imageUrl ? [imageUrl] : undefined,
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+	title={title}
+	description={description}
+	canonical={canonical}
+	image={imageUrl}
+	author={post.data.author ?? 'DBAI'}
+	type="article"
+	structuredData={structuredData}>
 	<a class="skip-link" href="#main">Skip to content</a>
 	<div class="page page--blog">
 		<header class="site-header container">
