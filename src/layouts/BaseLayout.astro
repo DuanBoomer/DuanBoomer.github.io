@@ -58,7 +58,7 @@ const rssUrl = Astro.site ? new URL('/rss.xml', Astro.site).toString() : '/rss.x
 			rel="stylesheet"
 		/>
 		{structuredData ? (
-			<script type="application/ld+json">
+			<script type="application/ld+json" is:inline>
 				{JSON.stringify(structuredData)}
 			</script>
 		) : null}

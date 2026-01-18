@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/home.css';
 import '../../styles/blog.css';
@@ -7,14 +7,14 @@ import '../../styles/blog.css';
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
 	return posts
-		.filter((post) => !post.data.draft)
-		.map((post) => ({
+		.filter((post: CollectionEntry<'blog'>) => !post.data.draft)
+		.map((post: CollectionEntry<'blog'>) => ({
 			params: { slug: post.slug },
 			props: { post },
 		}));
 }
 
-const { post } = Astro.props;
+const { post } = Astro.props as { post: CollectionEntry<'blog'> };
 const { Content } = await post.render();
 
 const title = `${post.data.title} | DBAI`;
@@ -84,7 +84,7 @@ const structuredData = {
 					<p class="section-lede">{post.data.description}</p>
 					<div class="post-meta">
 						{post.data.tags?.length
-							? post.data.tags.map((tag) => <span class="post-tag">{tag}</span>)
+							? post.data.tags.map((tag: string) => <span class="post-tag">{tag}</span>)
 							: null}
 						<span>{formattedDate}</span>
 						{post.data.readingTime ? <span>{post.data.readingTime}</span> : null}

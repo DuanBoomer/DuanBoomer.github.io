@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/home.css';
 import '../../styles/blog.css';
@@ -26,10 +26,13 @@ const structuredData = {
 };
 
 const posts = (await getCollection('blog'))
-	.filter((post) => !post.data.draft)
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+	.filter((post: CollectionEntry<'blog'>) => !post.data.draft)
+	.sort(
+		(a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
+			b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+	);
 
-const formatDate = (date) =>
+const formatDate = (date: Date) =>
 	date.toLocaleDateString('en-US', {
 		month: 'short',
 		day: 'numeric',
@@ -86,7 +89,7 @@ const formatDate = (date) =>
 				</div>
 				{posts.length ? (
 					<div class="post-grid">
-						{posts.map((post) => (
+						{posts.map((post: CollectionEntry<'blog'>) => (
 							<article class="post-card">
 								<div class="post-meta">
 									<span class="post-tag">{post.data.tags?.[0] || 'AI'}</span>
