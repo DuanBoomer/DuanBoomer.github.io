@@ -1,0 +1,111 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/home.css';
+import '../../styles/blog.css';
+
+const title = 'Blog | DBAI';
+const description =
+	'Latest posts on Copilot Studio, Microsoft AI, and practical enterprise AI delivery.';
+
+const posts = (await getCollection('blog'))
+	.filter((post) => !post.data.draft)
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const formatDate = (date) =>
+	date.toLocaleDateString('en-US', {
+		month: 'short',
+		day: 'numeric',
+		year: 'numeric',
+	});
+---
+
+<BaseLayout title={title} description={description}>
+	<a class="skip-link" href="#main">Skip to content</a>
+	<div class="page page--blog">
+		<header class="site-header container">
+			<div class="brand">
+				<span class="brand-mark">AI</span>
+				<div>
+					<div class="brand-name">DBAI</div>
+					<div class="brand-tag">Notes from an AI engineer in the Microsoft ecosystem</div>
+				</div>
+			</div>
+			<nav class="site-nav" aria-label="Primary">
+				<a href="/">Home</a>
+				<a href="/blog" aria-current="page">Blog</a>
+				<a href="/#subscribe">Subscribe</a>
+			</nav>
+			<button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+				<span class="theme-toggle__icon" aria-hidden="true"></span>
+				<span class="theme-toggle__label" data-theme-label>Dark mode</span>
+			</button>
+		</header>
+
+		<main id="main" class="main container">
+			<section class="blog-hero">
+				<div>
+					<p class="eyebrow">DBAI</p>
+					<h1 class="blog-hero__title">Blog posts and field notes</h1>
+					<p class="section-lede">
+						Clear, practical writing for teams shipping copilots, agents, and AI features.
+					</p>
+				</div>
+				<div class="blog-hero__panel">
+					<strong>Focus areas</strong>
+					<p>Copilot Studio, Azure AI, Microsoft Fabric, agent orchestration, and governance.</p>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="section-header">
+					<p class="eyebrow">Archive</p>
+					<h2>Browse every post</h2>
+					<p class="section-lede">New posts arrive weekly. Start with the most recent.</p>
+				</div>
+				{posts.length ? (
+					<div class="post-grid">
+						{posts.map((post) => (
+							<article class="post-card">
+								<div class="post-meta">
+									<span class="post-tag">{post.data.tags?.[0] || 'AI'}</span>
+									<span>{formatDate(post.data.publishDate)}</span>
+									<span>{post.data.readingTime ?? '5 min read'}</span>
+								</div>
+								<h3>{post.data.title}</h3>
+								<p>{post.data.description}</p>
+								<a class="text-link" href={`/blog/${post.slug}/`}>Read the full post</a>
+							</article>
+						))}
+					</div>
+				) : (
+					<div class="post-card">
+						<div class="post-meta">
+							<span class="post-tag">Launching soon</span>
+							<span>Pipeline ready</span>
+							<span>0 posts yet</span>
+						</div>
+						<h3>The first AI briefings are in edit</h3>
+						<p>
+							Expect guides on Copilot Studio build patterns, Azure AI architecture,
+							and the newest Microsoft AI announcements.
+						</p>
+						<a class="text-link" href="/#subscribe">Notify me on launch</a>
+					</div>
+				)}
+			</section>
+		</main>
+
+		<footer class="site-footer container">
+			<div class="footer-left">
+				<div class="brand-name">DBAI</div>
+				<p>Designed for clarity, safety, and shipping real AI.</p>
+			</div>
+			<div class="footer-links">
+				<a href="/">Home</a>
+				<a href="/blog">Archive</a>
+				<a href="/#subscribe">Subscribe</a>
+			</div>
+		</footer>
+	</div>
+</BaseLayout>

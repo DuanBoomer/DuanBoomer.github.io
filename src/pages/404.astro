@@ -1,13 +1,61 @@
 ---
-import Hero from '../components/Hero.astro';
-import CallToAction from '../components/CallToAction.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/home.css';
+
+const title = 'Page not found - DBAI';
+const description = 'The page you are looking for does not exist.';
 ---
 
-<BaseLayout title="Not Found" description="404 Error — this page was not found">
-	<Hero title="🙈"/>
-	<Hero title="Page Not Found" tagline="Go back to Home Page" />
-	<div style="width: 10rem;align-self: center;margin-top: 1rem;">
-		<CallToAction href="/">Home</CallToAction>
+<BaseLayout title={title} description={description}>
+	<a class="skip-link" href="#main">Skip to content</a>
+	<div class="page">
+		<header class="site-header container">
+			<div class="brand">
+				<span class="brand-mark">AI</span>
+				<div>
+					<div class="brand-name">DBAI</div>
+					<div class="brand-tag">Notes from an AI engineer in the Microsoft ecosystem</div>
+				</div>
+			</div>
+			<button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+				<span class="theme-toggle__icon" aria-hidden="true"></span>
+				<span class="theme-toggle__label" data-theme-label>Dark mode</span>
+			</button>
+		</header>
+
+		<main id="main" class="main container">
+			<section class="section not-found">
+				<div class="not-found__grid">
+					<div class="not-found__copy">
+						<p class="eyebrow">404 / Model route lost</p>
+						<h1>We could not find that endpoint.</h1>
+						<p class="section-lede">
+							Our agent searched the graph and returned <em>no matching context</em>.
+							The good news: DBAI is still online.
+						</p>
+						<div class="hero-actions">
+							<a class="button primary" href="/">Return home</a>
+							<a class="button ghost" href="/blog">Open the blog</a>
+						</div>
+					</div>
+					<div class="not-found__panel" aria-hidden="true">
+						<div class="not-found__signal">
+							<span class="not-found__chip">Neural trace</span>
+							<div class="not-found__pulse">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+						<div class="not-found__matrix">
+							<span>query://missing-path</span>
+							<span>ranker: 0.00</span>
+							<span>fallback: /blog</span>
+							<span>status: 404</span>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
 	</div>
 </BaseLayout>

@@ -1,275 +1,266 @@
 ---
 import { getCollection } from 'astro:content';
-
-// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/home.css';
 
-// Component Imports
-import BubbleGradientBG from '../components/BubbleGradientBG.astro';
-import CallToAction from '../components/CallToAction.astro';
-import Grid from '../components/Grid.astro';
-import Hero from '../components/Hero.astro';
-import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
+const title = 'DBAI - Field notes from an AI engineer';
+const description =
+	'A single-page AI blog landing focused on Copilot Studio, the Microsoft AI ecosystem, and modern AI advances.';
 
-// Page section components
-import ContactCTA from '../components/ContactCTA.astro';
-import Skills from '../components/Skills.astro';
-import Awards from '../components/Awards.astro';
-
-// Content Fetching: List four most recent work projects
-const projects = (await getCollection('work'))
+const posts = (await getCollection('blog'))
+	.filter((post) => !post.data.draft)
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);
+	.slice(0, 3);
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+const featuredPost = posts[0];
+
+const formatDate = (date) =>
+	date.toLocaleDateString('en-US', {
+		month: 'short',
+		day: 'numeric',
+		year: 'numeric',
+	});
 ---
 
-<BaseLayout>
-	<BubbleGradientBG />
-	<div class='stack gap-20 lg:gap-48'>
-		<div class='wrapper stack gap-8 lg:gap-20'>
-			<header class='hero'>
-				<Hero
-					title='Hello, my name is'
-					name='Chirag'
-					tagline='I am a Data Engineer and AI Solutions Engineer'
-					align='start'>
-					<div class='roles'>
-						<Pill
-							><Icon
-								icon='book-open-text'
-								size='1.33em'
-							/> Storyteller</Pill
-						>
-						<Pill
-							><Icon
-								icon='database'
-								size='1.33em'
-							/> AI Engineer</Pill
-						>
-						<Pill
-							><Icon
-								icon='finn'
-								size='1.33em'
-							/> Data Engineer</Pill
-						>
-						<Pill
-							><Icon
-								icon='git-pr'
-								size='1.33em'
-							/> Contributor</Pill
-						>
-					</div>
-				</Hero>
-
-				<img
-					alt='Chirag wearing a google developer student club tshirt looking at you'
-					width='480'
-					height='620'
-					src='/assets/p3.jpg'
-				/>
-			</header>
-
-			<Skills />
-		</div>
-
-		<main class='wrapper stack gap-20 lg:gap-48'>
-			<section class='section with-background with-cta'>
-				<header class='section-header stack gap-2 lg:gap-4'>
-					<h3>Projects</h3>
-					<p>
-						Take a look below at some of my featured projects from the past few
-						years.
-					</p>
-				</header>
-
-				<div class='gallery'>
-					<Grid variant='offset'>
-						{
-							projects.map((project) => (
-								<li>
-									<PortfolioPreview project={project} />
-								</li>
-							))
-						}
-					</Grid>
+<BaseLayout title={title} description={description}>
+	<a class="skip-link" href="#main">Skip to content</a>
+	<div class="page">
+		<header class="site-header container">
+			<div class="brand">
+				<span class="brand-mark">AI</span>
+				<div>
+					<div class="brand-name">DBAI</div>
+					<div class="brand-tag">Notes from an AI engineer building in the Microsoft ecosystem</div>
 				</div>
+			</div>
+			<nav class="site-nav" aria-label="Primary">
+				<a href="#latest">Latest</a>
+				<a href="/blog">Blog</a>
+				<a href="#subscribe">Subscribe</a>
+			</nav>
+			<button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+				<span class="theme-toggle__icon" aria-hidden="true"></span>
+				<span class="theme-toggle__label" data-theme-label>Dark mode</span>
+			</button>
+		</header>
 
-				<div class='cta'>
-					<CallToAction href='/work/'>
-						View All
-						<Icon
-							icon='arrow-right'
-							size='1.2em'
+		<main id="main" class="main">
+			<section class="hero container" id="overview">
+				<div class="hero-copy">
+					<p class="eyebrow reveal">Issue 01 - Launch Edition</p>
+					<h1 class="hero-title reveal delay-1">
+						Build with <em>responsible</em> AI, ship with clarity.
+					</h1>
+					<p class="lede reveal delay-2">
+						DBAI tracks what matters in Copilot Studio, Azure AI, and
+						the Microsoft ecosystem. Every post is written by an AI engineer for
+						teams turning prototypes into production.
+					</p>
+					<div class="hero-actions reveal delay-3">
+						<a class="button primary" href="#subscribe">Subscribe</a>
+						<a class="button ghost" href="#latest">Read the latest</a>
+					</div>
+					<div class="hero-meta reveal delay-4">
+						<div>
+							<p class="meta-label">Cadence</p>
+							<p class="meta-value">Weekly engineering notes</p>
+						</div>
+						<div>
+							<p class="meta-label">Focus</p>
+							<p class="meta-value">Copilot Studio, Azure AI, enterprise rollout</p>
+						</div>
+						<div>
+							<p class="meta-label">Format</p>
+							<p class="meta-value">Guides, playbooks, and trend briefs</p>
+						</div>
+					</div>
+				</div>
+			<div class="hero-art reveal delay-2">
+				{featuredPost ? (
+					<div class="hero-card">
+						<p class="badge">Latest post</p>
+						<h3>{featuredPost.data.title}</h3>
+						<p>{featuredPost.data.description}</p>
+						<a class="text-link" href={`/blog/${featuredPost.slug}/`}>Read now</a>
+					</div>
+				) : (
+					<div class="hero-card">
+						<p class="badge">Coming first</p>
+						<h3>Designing Copilots that earn trust</h3>
+						<p>
+							A launch essay on guardrails, grounding data, and how to keep copilots
+							aligned with user intent.
+						</p>
+						<a class="text-link" href="#subscribe">Get notified</a>
+					</div>
+				)}
+				<div class="hero-card alt">
+					<p class="badge">Playbook</p>
+					<h3>Copilot Studio setup checklist</h3>
+					<p>
+						A practical guide to connectors, security boundaries, and monitoring
+						that teams can reuse.
+					</p>
+					<a class="text-link" href="/blog">Browse the blog</a>
+				</div>
+			</div>
+		</section>
+
+			<section class="section container" id="latest">
+				<div class="section-header">
+					<p class="eyebrow">Latest</p>
+					<h2>Latest from the AI journal</h2>
+					<p class="section-lede">
+						New releases on Copilot Studio, Azure AI, and the Microsoft ecosystem.
+					</p>
+				</div>
+				{posts.length ? (
+					<div class="post-grid">
+						{posts.map((post) => (
+							<article class="post-card">
+								<div class="post-meta">
+									<span class="post-tag">{post.data.tags?.[0] || 'AI'}</span>
+									<span>{formatDate(post.data.publishDate)}</span>
+									<span>{post.data.readingTime ?? '5 min read'}</span>
+								</div>
+								<h3>{post.data.title}</h3>
+								<p>{post.data.description}</p>
+								<a class="text-link" href={`/blog/${post.slug}/`}>Read the full post</a>
+							</article>
+						))}
+					</div>
+				) : (
+					<div class="post-card">
+						<div class="post-meta">
+							<span class="post-tag">Launching soon</span>
+							<span>Pipeline ready</span>
+							<span>0 posts yet</span>
+						</div>
+						<h3>The first AI briefings are in edit</h3>
+						<p>
+							Expect guides on Copilot Studio build patterns, Azure AI architecture,
+							and the newest Microsoft AI announcements.
+						</p>
+						<a class="text-link" href="#subscribe">Notify me on launch</a>
+					</div>
+				)}
+			</section>
+
+			<section class="section container" id="subscribe">
+				<div class="subscribe-card">
+					<div>
+						<p class="eyebrow">Newsletter</p>
+						<h2>Get the AI engineer's digest.</h2>
+						<p>One email per week. Copilot Studio insights, Microsoft AI updates, and pragmatic guidance.</p>
+					</div>
+					<form
+						class="subscribe-form"
+						id="subscribe-form"
+						action="https://script.google.com/macros/s/AKfycbx9tJv9afqdovfxcu_zd4wdqWkUjb-iOUqBAVX8Enx3I1gk6ju12ZqmRH6G0mWd1mZA/exec"
+						method="post"
+						data-sheet-endpoint="https://script.google.com/macros/s/AKfycbx9tJv9afqdovfxcu_zd4wdqWkUjb-iOUqBAVX8Enx3I1gk6ju12ZqmRH6G0mWd1mZA/exec"
+						aria-label="Newsletter signup"
+					>
+						<label class="sr-only" for="email">Email address</label>
+						<input
+							id="email"
+							name="email"
+							type="email"
+							placeholder="you@email.com"
+							required
 						/>
-					</CallToAction>
+						<input type="hidden" name="page" value="" />
+						<input type="hidden" name="referrer" value="" />
+						<button class="button primary" type="submit">Join the list</button>
+					</form>
+					<p class="form-status" data-form-status role="status" aria-live="polite"></p>
+					<p class="subscribe-note">You can opt out anytime. We never share your address.</p>
 				</div>
 			</section>
 
-			<section class='section with-background bg-variant'>
-				<header class='section-header stack gap-2 lg:gap-4'>
-					<h3>Awards</h3>
-					<p>
-						I have been fortunate enough to receive praise for my work. Take a
-						look below to learn more.
-					</p>
-				</header>
-
-				<div class='gallery'>
-					<Awards />
-					<!-- <Grid variant='small'>
-						{
-							[
-								'Digital Di-Namo MRIIRS',
-								'Tech Expo SDIET',
-								'Tech Aarambh ACEM',
-								'Virasat',
-								'Bhavyug',
-							].map((brand) => (
-								<li class='mention-card'>
-									<p>{brand}</p>
-								</li>
-							))
-						}
-					</Grid> -->
+			<section class="section container" id="sign">
+				<div class="signboard">
+					<div class="signboard-content">
+						<p class="eyebrow">Editorial standards</p>
+						<h2>Built like a real blog, not a landing page.</h2>
+						<p>
+							Every post follows a clear structure so busy teams can skim, learn, and
+							ship with confidence.
+						</p>
+						<ul class="signboard-list">
+							<li><strong>TL;DR</strong> summary at the top of each post.</li>
+							<li><strong>Step-by-step</strong> build notes with code-friendly blocks.</li>
+							<li><strong>Source links</strong> to Microsoft docs and references.</li>
+						</ul>
+						<div class="signboard-actions">
+							<a class="button primary" href="#subscribe">Get launch updates</a>
+							<a class="button ghost" href="#latest">See latest posts</a>
+						</div>
+					</div>
+					<div class="signboard-panel">
+						<span class="signboard-title">Blogging rules</span>
+						<span class="signboard-direction">-></span>
+					</div>
 				</div>
 			</section>
 		</main>
 
-		<ContactCTA />
+	<footer class="site-footer container">
+		<div class="footer-left">
+			<div class="brand-name">DBAI</div>
+			<p>Designed for clarity, safety, and shipping real AI.</p>
+		</div>
+			<div class="footer-links">
+				<a href="#overview">Top</a>
+				<a href="#latest">Archive</a>
+				<a href="#subscribe">Subscribe</a>
+			</div>
+		</footer>
 	</div>
 </BaseLayout>
 
-<style>
-	.hero {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
-	}
+<script is:inline>
+	(() => {
+		const form = document.querySelector('#subscribe-form');
+		if (!form) return;
 
-	.roles {
-		/* display: none; */
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 0.5rem;
-	}
+		const status = form.parentElement?.querySelector('[data-form-status]');
+		const endpoint = form.dataset.sheetEndpoint;
+		const pageField = form.querySelector('input[name="page"]');
+		const referrerField = form.querySelector('input[name="referrer"]');
 
-	.hero img {
-		aspect-ratio: 5 / 4;
-		object-fit: cover;
-		object-position: top;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
-	}
+		const syncMeta = () => {
+			if (pageField) pageField.value = window.location.href;
+			if (referrerField) referrerField.value = document.referrer || 'direct';
+		};
 
-	@media (min-width: 50em) {
-		.hero {
-			display: grid;
-			grid-template-columns: 6fr 4fr;
-			padding-inline: 2.5rem;
-			gap: 3.75rem;
-		}
+		syncMeta();
 
-		.roles {
-			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
-			justify-content: left;
-		}
+		const setStatus = (message, state) => {
+			if (!status) return;
+			status.textContent = message;
+			status.classList.remove('is-success', 'is-error');
+			if (state) status.classList.add(state);
+		};
 
-		.hero img {
-			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
-			object-fit: cover;
-		}
-	}
+		form.addEventListener('submit', async (event) => {
+			if (!endpoint) return;
+			event.preventDefault();
+			setStatus('Submitting...', '');
 
-	/* ====================================================== */
-
-	.section {
-		display: grid;
-		gap: 2rem;
-	}
-
-	.with-background {
-		position: relative;
-	}
-
-	.with-background::before {
-		--hero-bg: var(--bg-image-subtle-2);
-
-		content: '';
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background:
-			url('/assets/backgrounds/noise.png') top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-			var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
-
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
-	}
-
-	.section-header {
-		justify-self: center;
-		text-align: center;
-		max-width: 50ch;
-		font-size: var(--text-md);
-		color: var(--gray-300);
-	}
-
-	.section-header h3 {
-		font-size: var(--text-2xl);
-	}
-
-	@media (min-width: 50em) {
-		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
-			gap: 5rem;
-		}
-
-		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
-		}
-
-		.section-header {
-			grid-area: header;
-			font-size: var(--text-lg);
-		}
-
-		.section-header h3 {
-			font-size: var(--text-4xl);
-		}
-
-		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
-		}
-
-		.gallery {
-			grid-area: gallery;
-		}
-
-		.cta {
-			grid-area: cta;
-		}
-	}
-
-	/* ====================================================== */
-</style>
+			try {
+				const formData = new FormData(form);
+				await fetch(endpoint, {
+					method: 'POST',
+					body: formData,
+					mode: 'no-cors',
+				});
+				form.reset();
+				syncMeta();
+				setStatus('Thanks. You are on the list.', 'is-success');
+			} catch (error) {
+				setStatus('Something went wrong. Please try again.', 'is-error');
+			}
+		});
+	})();
+</script>
